@@ -1,0 +1,35 @@
+﻿<Window x:Class="SnapKeySharp.Windows.AddExclusionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SnapKeySharp.Windows"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        mc:Ignorable="d"
+        Title="{DynamicResource AddExclusionTitle}" Height="250" Width="400"
+        ui:WindowHelper.UseModernWindowStyle="True"
+        ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
+    <Grid>
+        <StackPanel Orientation="Vertical" Margin="16">
+            <TextBlock Text="{DynamicResource AddExclusionTitle}" 
+                   FontWeight="SemiBold" FontSize="16" Margin="0,0,0,12"/>
+
+            <Button Content="{DynamicResource SearchFile}" Click="SearchFileClick"></Button>
+
+            <TextBlock Text="{DynamicResource OrTypeManually}" FontSize="16" Margin="0,8,0,8"/>
+
+            <TextBox  x:Name="TextBoxProcessName"
+                      ui:ControlHelper.PlaceholderText="{DynamicResource ProcessName}"></TextBox>
+
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" 
+            VerticalAlignment="Bottom" Margin="0,0,16,16">
+            <Button Content="{DynamicResource BtnCancel}" Margin="0,0,8,0" Click="CancelClick" IsCancel="True"/>
+            <Button Content="{DynamicResource BtnOK}" Click="OKClick" IsDefault="True"/>
+        </StackPanel>
+
+
+
+    </Grid>
+</Window>

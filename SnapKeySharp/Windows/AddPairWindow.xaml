@@ -1,0 +1,49 @@
+﻿<Window x:Class="SnapKeySharp.Windows.AddPairWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        xmlns:local="clr-namespace:SnapKeySharp.Windows"
+        mc:Ignorable="d"
+        ui:WindowHelper.UseModernWindowStyle="True"
+        Title="{DynamicResource AddPairTitle}" Height="200" Width="320"
+        ResizeMode="NoResize" WindowStartupLocation="CenterOwner"
+        KeyDown="Window_KeyDown">
+    <StackPanel Margin="16">
+
+        <TextBlock Text="{DynamicResource AddPairTitle}" 
+                   FontWeight="SemiBold" FontSize="16" Margin="0,0,0,16"/>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" Background="#252525" CornerRadius="6" Height="48"
+                    x:Name="Key1Border" Focusable="True" GotFocus="Border1GotFocus" LostFocus="Border1LostFocus" MouseEnter="Border1MouseEnter" MouseLeave="Border1MouseLeave">
+                <TextBlock x:Name="Key1Text" Text="{DynamicResource KeyPlaceholder}"
+                           HorizontalAlignment="Center" VerticalAlignment="Center"
+                           Foreground="#888"/>
+            </Border>
+
+            <TextBlock Grid.Column="1" Text="⇔" Margin="12,0"
+                       VerticalAlignment="Center" FontSize="18"/>
+
+            <Border Grid.Column="2" Background="#252525" CornerRadius="6" Height="48"
+                    x:Name="Key2Border" Focusable="True" GotFocus="Border2GotFocus" LostFocus="Border2LostFocus" MouseEnter="Border2MouseEnter" MouseLeave="Border2MouseLeave">
+                <TextBlock x:Name="Key2Text" Text="{DynamicResource KeyPlaceholder}"
+                           HorizontalAlignment="Center" VerticalAlignment="Center"
+                           Foreground="#888"/>
+            </Border>
+        </Grid>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,16,0,0">
+            <Button Content="{DynamicResource BtnCancel}" Margin="0,0,8,0" Click="CancelClick" IsCancel="True"/>
+            <Button Content="{DynamicResource BtnOK}" Click="OKClick" IsDefault="True"/>
+        </StackPanel>
+
+    </StackPanel>
+</Window>

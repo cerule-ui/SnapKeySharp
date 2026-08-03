@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="SnapKeyLauncher/SnapKeyLauncher.csproj" Id="d6f8411f-6e12-4064-8079-4c4e97fc62c5" />
+  <Project Path="SnapKeySharp/SnapKeySharp.csproj" />
+</Solution>

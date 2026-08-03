@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+	<system:String x:Key="StatusActive">Active</system:String>
+	<system:String x:Key="StatusInactive">Inactive</system:String>
+	<system:String x:Key="PairsHeader">SOCD Pairs</system:String>
+	<system:String x:Key="AddPair">+ Add pair</system:String>
+	<system:String x:Key="ExclusionsHeader">Exclusions</system:String>
+	<system:String x:Key="AddExclusion">+ Add exclusion</system:String>
+	<system:String x:Key="BtnPause">Pause</system:String>
+	<system:String x:Key="BtnPlay">Play</system:String>
+	<system:String x:Key="AddPairTitle">Add SOCD Pair</system:String>
+	<system:String x:Key="KeyPlaceholder">Press a key</system:String>
+	<system:String x:Key="BtnOK">OK</system:String>
+	<system:String x:Key="BtnCancel">Cancel</system:String>
+	<system:String x:Key="AddExclusionTitle">Add Exclusion</system:String>
+	<system:String x:Key="SearchFile">Browse file</system:String>
+	<system:String x:Key="OrTypeManually">- or type manually -</system:String>
+	<system:String x:Key="ProcessName">process name</system:String>
+	<system:String x:Key="TrayOpen">Open</system:String>
+	<system:String x:Key="TrayAutoStart">AutoStart</system:String>
+	<system:String x:Key="TrayWorking">Toggle SOCD</system:String>
+	<system:String x:Key="TrayExit">Exit</system:String>
+	
+</ResourceDictionary>

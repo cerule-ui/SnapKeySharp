@@ -17,9 +17,9 @@
 
 ## Скриншоты
 
-| Главное окно | Лаунчер |
+| Лаунчер | Главное окно |
 |:---:|:---:|
-| ![Главное окно](screenshots/screenshot-main.png) | ![Лаунчер](screenshots/screenshot-launcher.png)
+| ![Лаунчер](screenshots/screenshot-launcher.png) | ![Главное окно](screenshots/screenshot-main.png)
 
 ---
 

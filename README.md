@@ -13,6 +13,12 @@
 
 [Русский](README.ru.md)
 
+## ☕ Support the Project
+
+If SnapKeySharp was helpful, you can buy the developer a coffee:
+
+<kbd>2204 3101 4894 7197</kbd> - **Yandex**
+
 </div>
 
 ---

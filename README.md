@@ -13,6 +13,11 @@
 
 [Русский](README.ru.md)
 
+</div>
+
+<div align="center">
+
+---
 ## ☕ Support the Project
 
 If SnapKeySharp was helpful, you can buy the developer a coffee:

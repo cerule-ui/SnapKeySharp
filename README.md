@@ -70,9 +70,9 @@ If SnapKeySharp was helpful, you can buy the developer a coffee:
 ### ⚠️ Run as Administrator
 **Make sure to run SnapKeyLauncher.exe using "Run as administrator".**
 Without administrator privileges, the launcher **will not be able to**:
-1. Copy files to C:\Program Files\SnapKeySharp
-2. Create a registry entry for startup (autostart)
-3. Add a shortcut to the Start Menu
+- Copy files to C:\Program Files\SnapKeySharp
+- Create a registry entry for startup (autostart)
+- Add a shortcut to the Start Menu
 
 If nothing downloads or appears during installation, it is likely a permissions issue. 
 **Right-click the file → "Run as administrator".**

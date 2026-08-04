@@ -19,7 +19,7 @@
 
 | Главное окно | Лаунчер |
 |:---:|:---:|
-| ![Главное окно](screenshots/screenshot-main.png) | ![Лаунчер](screenshots/screenshot-launcher.png
+| ![Главное окно](screenshots/screenshot-main.png) | ![Лаунчер](screenshots/screenshot-launcher.png)
 
 ---
 

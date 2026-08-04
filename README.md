@@ -64,8 +64,18 @@ If SnapKeySharp was helpful, you can buy the developer a coffee:
 
 1. Go to [Releases](https://github.com/cerule-ui/SnapKeySharp/releases/latest) and download `SnapKeySetup.zip`.
 2. Extract the archive to any folder.
-3. Run `SnapKeyLauncher.exe` and click **Install**.
+3. Run `SnapKeyLauncher.exe` as administrator and click **Install**.
 4. After installation, the source folder can be deleted — the launcher is accessible via **Control Panel → Programs and Features → SnapKey**.
+
+### ⚠️ Run as Administrator
+**Make sure to run SnapKeyLauncher.exe using "Run as administrator".**
+Without administrator privileges, the launcher **will not be able to**:
+1. Copy files to C:\Program Files\SnapKeySharp
+2. Create a registry entry for startup (autostart)
+3. Add a shortcut to the Start Menu
+
+If nothing downloads or appears during installation, it is likely a permissions issue. 
+**Right-click the file → "Run as administrator".**
 
 ### Build from Source
 

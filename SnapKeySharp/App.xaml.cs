@@ -20,27 +20,27 @@ namespace SnapKeySharp
             base.OnStartup(e);
 
 
-            //if (!UpdateService.CheckLauncher())
-            //{
-            //    Process.Start(new ProcessStartInfo
-            //    {
-            //        FileName = "https://github.com/cerule-ui/SnapKeySharp/releases/latest",
-            //        UseShellExecute = true
-            //    });
+            if (!UpdateService.CheckLauncher())
+            {
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = "https://github.com/cerule-ui/SnapKeySharp/releases/latest",
+                    UseShellExecute = true
+                });
 
-            //    MessageBox.Show(
-            //        "Please install SnapKey using SnapKeyLauncher.exe.",
-            //        "Launcher not found",
-            //        MessageBoxButton.OK,
-            //        MessageBoxImage.Warning
-            //    );
+                MessageBox.Show(
+                    "Please install SnapKey using SnapKeyLauncher.exe.",
+                    "Launcher not found",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning
+                );
 
-            //    Shutdown();
-            //    return;
-            //}
+                Shutdown();
+                return;
+            }
 
             string culture = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
-            string dict = culture == "ru" ? "Strings.en.xaml" : "Strings.en.xaml";
+            string dict = culture == "ru" ? "Strings.ru.xaml" : "Strings.en.xaml";
 
             var uri = new Uri($"Localization/{dict}", UriKind.Relative);
             Resources.MergedDictionaries.Add(new ResourceDictionary { Source = uri });

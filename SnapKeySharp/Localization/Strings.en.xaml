@@ -22,6 +22,7 @@
 	<system:String x:Key="TrayOpen">Open</system:String>
 	<system:String x:Key="TrayAutoStart">AutoStart</system:String>
 	<system:String x:Key="TrayWorking">Toggle SOCD</system:String>
-	<system:String x:Key="TrayExit">Exit</system:String>
-	
+    <system:String x:Key="TrayExit">Exit</system:String>
+    <system:String x:Key="Status">Status</system:String>
+
 </ResourceDictionary>

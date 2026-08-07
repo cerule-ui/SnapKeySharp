@@ -68,7 +68,7 @@
 
                         <!-- Текст статуса: подпись + значение -->
                         <StackPanel VerticalAlignment="Center">
-                            <TextBlock Text="Состояние" 
+                            <TextBlock Text="{DynamicResource Status}" 
                            FontSize="11" 
                            Foreground="#808080" 
                            Margin="0,0,0,0"/>

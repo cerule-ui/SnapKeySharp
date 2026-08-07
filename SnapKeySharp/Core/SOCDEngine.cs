@@ -87,13 +87,22 @@ namespace SnapKeySharp.Core
 
         public void AddPair(uint key1, uint key2) // добавляет в словарь pairs новую пару, с проверкой, есть ли там уже она или нет
         {
-            if (pairs.ContainsKey(key1) || pairs.ContainsKey(key2))
+            if (ContainsPair(key1, key2))
             {
                 return;
             }
 
             pairs[key1] = key2;
             pairs[key2] = key1;
+        }
+
+        public bool ContainsPair(uint key1, uint key2) // возвращает содержится ли любой из ключей в словаре pairs
+        {
+            if (pairs.ContainsKey(key1) || pairs.ContainsKey(key2))
+            {
+                return true;
+            }
+            return false;
         }
 
         public void AddExcludedProcess(string processPath) // добавляет процесс в список исключений
@@ -109,11 +118,22 @@ namespace SnapKeySharp.Core
             pairs.Remove(key2);
         }
 
+        public bool PairsExist() // возвращает есть ли пары в словаре pairs 
+        {
+            return pairs.Count > 0;
+        }
+
+
         public void RemoveExcludedProcess(string processPath) // убирает процесс из списка исключений
                                                               // можно указать как путь, так и просто название файла (с расширением или без)
         {
             string processName = System.IO.Path.GetFileNameWithoutExtension(processPath);
             _excludedProcesses.Remove(processName);
+        }
+
+        public bool ExcludedProcessesExist() // возвращает есть ли еще приложения в списке исключений
+        {
+            return _excludedProcesses.Count > 0;
         }
 
 

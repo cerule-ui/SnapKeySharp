@@ -42,5 +42,8 @@ namespace SnapKeySharp.Core
 
         public void RemovePair(uint key1, uint key2) => _engine.RemovePair(key1, key2);
         public void RemoveExcludedProcess(string processPath) => _engine.RemoveExcludedProcess(processPath);
+        public bool ContainsPair(uint key1, uint key2) => _engine.ContainsPair(key1, key2);
+        public bool ExcludedProcessesExist() => _engine.ExcludedProcessesExist();
+        public bool PairsExist() => _engine.PairsExist();
     }
 }

@@ -24,6 +24,10 @@ namespace SnapKeySharp
         bool _isActive;
         private AppConfig _config;
 
+        private static readonly string CurrentVersion =
+            System.Reflection.Assembly.GetExecutingAssembly()
+                .GetName().Version?.ToString(3) ?? "0.0.0";
+
         public MainWindow()
         {
             InitializeComponent();
@@ -60,11 +64,15 @@ namespace SnapKeySharp
             AutoStartMenuItem.IsChecked = realAutoStart; // галочка в трее на автозагрузку
             WorkingMenuItem.IsChecked = _config.IsActive;
 
+            versionText.Text = "v" + CurrentVersion.ToString();
+
             if (_isActive)
             {
                 _service.Start();
                 StatusDot.Fill = new SolidColorBrush(Color.FromRgb(76, 175, 80));
                 StatusText.Text = (string)FindResource("StatusActive");
+                StatusDotFlow.Fill = new SolidColorBrush(Color.FromArgb(150, 76, 175, 80));
+                BorderStatus.Background = new SolidColorBrush(Color.FromRgb(30, 34, 30));
                 ToggleButton.Icon = new ModernWpf.Controls.SymbolIcon(ModernWpf.Controls.Symbol.Pause);
                 ToggleButton.Label = (string)FindResource("BtnPause");
             }
@@ -73,6 +81,8 @@ namespace SnapKeySharp
                 _service.Stop();
                 StatusDot.Fill = new SolidColorBrush(Color.FromRgb(244, 67, 54));
                 StatusText.Text = (string)FindResource("StatusInactive");
+                StatusDotFlow.Fill = new SolidColorBrush(Color.FromArgb(150, 244, 67, 54));
+                BorderStatus.Background = new SolidColorBrush(Color.FromRgb(34, 30, 30));
                 ToggleButton.Icon = new ModernWpf.Controls.SymbolIcon(ModernWpf.Controls.Symbol.Play);
                 ToggleButton.Label = (string)FindResource("BtnPlay");
             }
@@ -134,6 +144,8 @@ namespace SnapKeySharp
                 WorkingMenuItem.IsChecked = true;
                 StatusText.Text = (string)FindResource("StatusActive");
                 StatusDot.Fill = new SolidColorBrush(Color.FromRgb(76, 175, 80));
+                StatusDotFlow.Fill = new SolidColorBrush(Color.FromArgb(150, 76, 175, 80));
+                BorderStatus.Background = new SolidColorBrush(Color.FromRgb(30, 34, 30));
                 ToggleButton.Icon = new ModernWpf.Controls.SymbolIcon(ModernWpf.Controls.Symbol.Pause);
                 ToggleButton.Label = (string)FindResource("BtnPause");
             }
@@ -143,6 +155,8 @@ namespace SnapKeySharp
                 WorkingMenuItem.IsChecked = false;
                 StatusText.Text = (string)FindResource("StatusInactive");
                 StatusDot.Fill = new SolidColorBrush(Color.FromRgb(244, 67, 54));
+                StatusDotFlow.Fill = new SolidColorBrush(Color.FromArgb(150, 244, 67, 54));
+                BorderStatus.Background = new SolidColorBrush(Color.FromRgb(34, 30, 30));
                 ToggleButton.Icon = new ModernWpf.Controls.SymbolIcon(ModernWpf.Controls.Symbol.Play);
                 ToggleButton.Label = (string)FindResource("BtnPlay");
             }
@@ -154,7 +168,9 @@ namespace SnapKeySharp
             dialog.Owner = this;
             if (dialog.ShowDialog() == true)
             {
-                if (!_config.Pairs.Contains($"{dialog.Key1},{dialog.Key2}") && dialog.Key1 != dialog.Key2)
+                if (!_config.Pairs.Contains($"{dialog.Key1},{dialog.Key2}") 
+                    && dialog.Key1 != dialog.Key2
+                    && !_service.ContainsPair((uint)dialog.Key1, (uint)dialog.Key2))
                 {
                     _service.AddPair((uint)dialog.Key1, (uint)dialog.Key2);
                     _config.Pairs.Add($"{dialog.Key1},{dialog.Key2}");
@@ -188,6 +204,8 @@ namespace SnapKeySharp
                 Margin = new Thickness(0, 0, 8, 0)
             };
             var btn = new Button { Content = "✕" };
+            PairsHorizontalLine.Opacity = 1;
+            PairsHorizontalLine.Margin = new Thickness(15, 10, 15, 8);
             btn.Click += (s, e) =>
             {
                 _service.RemovePair(key1, key2);
@@ -197,6 +215,11 @@ namespace SnapKeySharp
                 _config.Pairs.Remove(Pair);
                 ConfigService.Save(_config);
                 PairsPanel.Children.Remove(panel);
+                if (!_service.PairsExist())
+                {
+                    PairsHorizontalLine.Opacity = 0;
+                    PairsHorizontalLine.Margin = new Thickness(0);
+                }
             };
             panel.Children.Add(text);
             panel.Children.Add(btn);
@@ -213,12 +236,19 @@ namespace SnapKeySharp
                 MaxWidth = 275, // максимальная ширина до обрезки
             };
             var btn = new Button { Content = "✕" };
+            ExclusionsHorizontalLine.Opacity = 1;
+            ExclusionsHorizontalLine.Margin = new Thickness(15, 10, 15, 8);
             btn.Click += (s, e) =>
             {
                 _service.RemoveExcludedProcess(processName);
                 _config.Exclusions.Remove(processName);
                 ConfigService.Save(_config);
                 ExclusionsPanel.Children.Remove(panel);
+                if (!_service.ExcludedProcessesExist())
+                {
+                    ExclusionsHorizontalLine.Opacity = 0;
+                    ExclusionsHorizontalLine.Margin = new Thickness(0);
+                }
             };
             panel.Children.Add(text);
             panel.Children.Add(btn);

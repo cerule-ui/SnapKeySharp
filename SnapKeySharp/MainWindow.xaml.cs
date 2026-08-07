@@ -111,7 +111,7 @@ namespace SnapKeySharp
 
             string exePath = Environment.ProcessPath!;
             if (_config.AutoStart)
-                key.SetValue("SnapKeySharp", $"\"exePath\" --tray");
+                key.SetValue("SnapKeySharp", $"\"{exePath}\" --tray");
             else
                 key.DeleteValue("SnapKeySharp", false);
         }

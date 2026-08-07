@@ -101,7 +101,25 @@ namespace SnapKeySharp.Services
                 AppDomain.CurrentDomain.BaseDirectory,
                 "SnapKeyLauncher.exe"
             );
-            Process.Start(launcherPath, $"--update \"{downloadUrl}\"");
+
+            var psi = new ProcessStartInfo
+            {
+                FileName = launcherPath,
+                Arguments = $"--update \"{downloadUrl}\"",
+                UseShellExecute = true,
+                Verb = "runas"
+            };
+
+            try
+            {
+                Process.Start(psi);
+            }
+            catch (System.ComponentModel.Win32Exception)
+            {
+                // пользователь отменил UAC
+                return;
+            }
+
             Application.Current.Shutdown();
         }
     }
